@@ -147,12 +147,37 @@ nnoremap <F5> :call BuildAndRun()<CR>
 "                                   плагины
 
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clangd-completer'}
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "                                   nerdtree
 
 nnoremap <leader><C-f> :NERDTreeFind<CR>
+
+"                                   YouCompleteMe
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_auto_trigger = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_filetype_specific_completion_to_disable = {
+    \ 'vim': 1,
+    \ 'tex': 1,
+    \ }
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+" let g:ycm_key_invoke_completion = '<C-space>'
+" let g:ycm_key_list_select_completion = '<C-n>'
+
+
+"                                   auto-pairs
+
+let g:AutoPairsMapCR = 1
+let g:autopairs_cpp = 1
+let g:autopairs_cpp_types = '<:>'
+let g:autopairs_cpp_smart_popup = 1
 
 "-------------------------------------------------------------------------------------------------------------
